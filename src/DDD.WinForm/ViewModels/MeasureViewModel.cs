@@ -1,7 +1,12 @@
 ﻿namespace DDD.WinForm.ViewModels
 {
+    using System;
+    using Domain.Repositories;
+
     public sealed class MeasureViewModel : ViewModelBase
     {
+        private ISensorRepository _sensorRepository;
+
         private string _measureValue = "--";
 
         public string MeasureValue
@@ -12,7 +17,8 @@
 
         public void Measure()
         {
-            throw new System.NotImplementedException();
+            var value = _sensorRepository.GetData();
+            MeasureValue = Math.Round(value, 2) + "m/s";
         }
     }
 }
