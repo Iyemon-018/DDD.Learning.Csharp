@@ -2,12 +2,18 @@
 {
     using System;
     using Domain.Repositories;
+    using Infrastructure;
 
     public sealed class MeasureViewModel : ViewModelBase
     {
         private readonly ISensorRepository _sensorRepository;
 
         private string _measureValue = "--";
+
+        public MeasureViewModel() : this(Factories.CreateSensorRepository())
+        {
+
+        }
 
         public MeasureViewModel(ISensorRepository sensorRepository)
         {
