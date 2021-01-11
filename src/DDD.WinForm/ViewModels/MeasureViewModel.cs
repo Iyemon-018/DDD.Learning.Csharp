@@ -5,9 +5,14 @@
 
     public sealed class MeasureViewModel : ViewModelBase
     {
-        private ISensorRepository _sensorRepository;
+        private readonly ISensorRepository _sensorRepository;
 
         private string _measureValue = "--";
+
+        public MeasureViewModel(ISensorRepository sensorRepository)
+        {
+            _sensorRepository = sensorRepository;
+        }
 
         public string MeasureValue
         {
@@ -18,7 +23,7 @@
         public void Measure()
         {
             var value = _sensorRepository.GetData();
-            MeasureValue = Math.Round(value, 2) + "m/s";
+            MeasureValue = Math.Round(value, 2) + " m/s";
         }
     }
 }

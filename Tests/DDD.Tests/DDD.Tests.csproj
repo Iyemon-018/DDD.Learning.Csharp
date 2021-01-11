@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\src\DDD.WinForm\DDD.WinForm.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mock\Infrastructure\" />
+  </ItemGroup>
+
 </Project>
