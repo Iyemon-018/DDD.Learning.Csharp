@@ -14,5 +14,10 @@
             // こうすることで、外部にインスタンスの生成条件を出さずに知識を隠蔽することができる。
             return new SensorFake();
         }
+
+        public static IMeasureRepository CreateMeasureRepository()
+        {
+            return new MeasureFake();
+        }
     }
 }

@@ -8,5 +8,10 @@
         {
             return Convert.ToSingle(self);
         }
+
+        public static DateTime ToDate(this string self)
+        {
+            return DateTime.ParseExact(self, "yyyy/MM/dd HH:mm:ss", null);
+        }
     }
 }
