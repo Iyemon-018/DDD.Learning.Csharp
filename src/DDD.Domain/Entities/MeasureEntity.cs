@@ -1,6 +1,7 @@
 ﻿namespace DDD.Domain.Entities
 {
     using System;
+    using ValueObjects;
 
     /// <summary>
     /// 計測情報を保持する Entity クラスです。
@@ -17,13 +18,13 @@
         {
             Id    = id;
             Date  = date;
-            Value = value;
+            Value = new MeasureValue(value);
         }
 
         public string Id { get; }
 
-        public DateTime Date { get; }
+        public MeasureDate Date { get; }
 
-        public float Value { get; }
+        public MeasureValue Value { get; }
     }
 }

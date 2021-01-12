@@ -22,8 +22,8 @@
             _measureRepository = measureRepository;
 
             var entity = _measureRepository.GetLatest();
-            MeasureDate  = entity.Date.ToString("yyyy/MM/dd HH:mm:ss");
-            MeasureValue = Math.Round(entity.Value, 2) + " m/s";
+            MeasureDate  = entity.Date.DisplayValue;
+            MeasureValue = entity.Value.DisplayValue;
         }
 
         public string MeasureDate

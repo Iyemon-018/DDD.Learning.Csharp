@@ -3,6 +3,7 @@
     using System;
     using Domain.Repositories;
     using Domain.Helpers;
+    using Domain.ValueObjects;
 
     /// <summary>
     /// <see cref="ISensorRepository"/> の具象クラス
@@ -33,10 +34,9 @@
     {
         private readonly Random _random = new Random();
 
-
-        public float GetData()
+        public MeasureValue GetData()
         {
-            return _random.Next(0, 3) + _random.NextDouble().ToSingle();
+            return new MeasureValue(_random.Next(0, 3) + _random.NextDouble().ToSingle());
         }
     }
 }

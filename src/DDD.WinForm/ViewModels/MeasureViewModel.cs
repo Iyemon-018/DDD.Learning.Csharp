@@ -29,7 +29,7 @@
         public void Measure()
         {
             var value = _sensorRepository.GetData();
-            MeasureValue = Math.Round(value, 2) + " m/s";
+            MeasureValue = value.DisplayValue;
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace DDD.Tests.WinForm.ViewModels
 {
     using ChainingAssertion;
+    using DDD.Domain.Entities;
+    using DDD.Domain.Helpers;
+    using DDD.Domain.Repositories;
+    using DDD.Domain.ValueObjects;
     using DDD.WinForm.ViewModels;
-    using Domain.Entities;
-    using Domain.Helpers;
-    using Domain.Repositories;
     using Moq;
     using Xunit;
 
@@ -14,14 +15,14 @@
         public void Test_計測_シナリオ()
         {
             var sensorMock = new Mock<ISensorRepository>();
-            sensorMock.Setup(x => x.GetData()).Returns(1.23456f);
+            sensorMock.Setup(x => x.GetData()).Returns(new MeasureValue(1.23456f));
 
             var viewModel  = new MeasureViewModel(sensorMock.Object);
 
             viewModel.Measure();
             viewModel.MeasureValue.Is("1.23 m/s");
 
-            sensorMock.Setup(x => x.GetData()).Returns(2.2f);
+            sensorMock.Setup(x => x.GetData()).Returns(new MeasureValue(2.2f));
             viewModel.Measure();
             viewModel.MeasureValue.Is("2.2 m/s");
         }
