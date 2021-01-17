@@ -27,5 +27,10 @@
         {
             return _entities;
         }
+
+        public void Save(MeasureEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -20,11 +20,11 @@
             var viewModel  = new MeasureViewModel(sensorMock.Object);
 
             viewModel.Measure();
-            viewModel.MeasureValue.Is("1.23 m/s");
+            viewModel.MeasureValue.Is("1.23m/s");
 
             sensorMock.Setup(x => x.GetData()).Returns(new MeasureValue(2.2f));
             viewModel.Measure();
-            viewModel.MeasureValue.Is("2.2 m/s");
+            viewModel.MeasureValue.Is("2.2m/s");
         }
 
         [Fact]
@@ -37,7 +37,7 @@
             var viewModel   = new LatestViewModel(measureMock.Object);
 
             viewModel.MeasureDate.Is("2017/01/01 13:00:00");
-            viewModel.MeasureValue.Is("1.23 m/s");
+            viewModel.MeasureValue.Is("1.23m/s");
         }
     }
 }

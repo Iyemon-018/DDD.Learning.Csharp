@@ -26,7 +26,7 @@
             viewModel.Measures.Count.Is(2);
 
             viewModel.Measures[0].MeasureDate.Is("2017/01/01 13:00:00");
-            viewModel.Measures[0].MeasureValue.Is("1.23 m/s");
+            viewModel.Measures[0].MeasureValue.Is("1.23m/s");
         }
     }
 }

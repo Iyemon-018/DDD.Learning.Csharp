@@ -8,5 +8,7 @@
         MeasureEntity GetLatest();
 
         IReadOnlyList<MeasureEntity> GetData();
+
+        void Save(MeasureEntity entity);
     }
 }
