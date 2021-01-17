@@ -42,5 +42,19 @@
             // エラーメッセージには呼び出されていないメソッドも記載される。
             measureMock.VerifyAll();
         }
+
+        [Fact]
+        public void Test_計測登録_シナリオ_エラーチェック()
+        {
+            var measureMock   = new Mock<IMeasureRepository>();
+            var viewModelMock = new Mock<MeasureSaveViewModel>(measureMock.Object);
+
+            viewModelMock.Setup(x => x.GetDateTime()).Returns("2017/01/03 03:00:00".ToDate);
+
+            var viewModel = viewModelMock.Object;
+            var ex        = Record.Exception(() => viewModel.Save());
+
+            ex.Message.Is("計測値を入力してください。");
+        }
     }
 }

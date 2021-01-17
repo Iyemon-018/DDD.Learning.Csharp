@@ -26,5 +26,11 @@ namespace DDD.WinForm.Views
             using var f = new MeasureListView();
             f.ShowDialog();
         }
+
+        private void SaveButton_Click(object sender, System.EventArgs e)
+        {
+            using var f = new MeasureSaveView();
+            f.ShowDialog();
+        }
     }
 }

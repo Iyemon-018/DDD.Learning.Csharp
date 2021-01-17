@@ -30,7 +30,14 @@
 
         public void Save(MeasureEntity entity)
         {
-            throw new System.NotImplementedException();
+            var index = _entities.FindIndex(x => x.Id == entity.Id);
+            if (index < 0)
+            {
+                _entities.Add(entity);
+                return;
+            }
+
+            _entities[index] = entity;
         }
     }
 }

@@ -2,7 +2,9 @@
 {
     using System;
     using Domain.Entities;
+    using Domain.Helpers;
     using Domain.Repositories;
+    using Infrastructure;
 
     public class MeasureSaveViewModel : ViewModelBase
     {
@@ -11,6 +13,11 @@
         private DateTime _measureDate;
 
         private string _measureValue = "";
+
+        public MeasureSaveViewModel() : this(Factories.CreateMeasureRepository())
+        {
+            
+        }
 
         public MeasureSaveViewModel(IMeasureRepository measureRepository)
         {
@@ -48,6 +55,8 @@
             // ここでは入力した値を DB に登録するものと仮定する。
             // DB へのアクセスは Infrastructure に記述する。
             // テストコードは Infrastructure 層は対象外のため、このメソッドで保存した情報をチェックできればいい。
+            Guard.IsNullOrEmptyMessage(MeasureValue, "計測値を入力してください。");
+
             var value  = Convert.ToSingle(MeasureValue);
             var entity = new MeasureEntity(Guid.NewGuid().ToString(), MeasureDate, value);
 
